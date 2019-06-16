@@ -29,8 +29,8 @@ a.go-up {
   background-color: #181818;
   width: 50px;
   height: 50px;
-  bottom: 30px;
-  right: 30px;
+  bottom: 15px;
+  right: 15px;
   z-index: 99;
   animation: appear 0.5s;
   transition: 0.3s;
@@ -131,7 +131,8 @@ section.events div.eventPhoto img {
   width: auto;
 }
 
-section.events div.eventDescription {
+section.events div.eventDescription,
+section.featured-cyclist div.featured-cyclist-wrap div.cyclist {
   flex-grow: 1;
   flex-basis: 30%;
   position: relative;
@@ -146,12 +147,14 @@ section.events div.eventDescription p.date {
   padding-bottom: 20px;
 }
 
-section.events div.eventDescription h1 {
+section.events div.eventDescription h1,
+section.featured-cyclist div.featured-cyclist-wrap div.cyclist h1 {
   font-size: 60px;
   font-weight: 500;
 }
 
-section.events div.eventDescription hr {
+section.events div.eventDescription hr,
+section.featured-cyclist div.featured-cyclist-wrap div.cyclist hr {
   height: 6px;
   width: 50%;
   border: 0 none;
@@ -159,7 +162,8 @@ section.events div.eventDescription hr {
   background-color: #fefefe;
   margin: 40px 0;
 }
-section.events div.eventDescription p.description {
+section.events div.eventDescription p.description,
+section.featured-cyclist div.featured-cyclist-wrap div.cyclist p.description {
   font-size: 20px;
   line-height: 32px;
   font-weight: normal;
@@ -191,6 +195,9 @@ section.events div.eventDescription div button:hover {
   background-color: #1f1f1f;
   color: #fefefe;
 }
+section.events div.eventDescription div button:focus {
+  outline: none;
+}
 
 section.events div.eventDescription div button i:first-child {
   margin-right: 20px;
@@ -201,7 +208,7 @@ section.events div.eventDescription div button i:last-child {
 
 /* News Panel */
 
-div.newsPanel {
+section.news {
   background: linear-gradient(
     to right,
     #ddd 0%,
@@ -213,7 +220,7 @@ div.newsPanel {
   padding: 10vh 0;
 }
 
-div.newsPanel h1 {
+section.news h1 {
   max-width: 1600px;
   margin: 0 auto;
   color: #1f1f1f;
@@ -221,9 +228,8 @@ div.newsPanel h1 {
   line-height: 50px;
 }
 
-div.newsPanel section.news {
+section.news div.news-panel {
   max-width: 1600px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -233,40 +239,55 @@ div.newsPanel section.news {
   overflow: hidden;
 }
 
-div.newsPanel section.news div {
+section.news div.news-panel div.holder {
   height: 80vh;
-  background-size: cover;
-  background-position: center center;
+  max-height: 80vh;
+  width: 100%;
   position: relative;
   transition: 0.3s;
+  overflow: hidden;
+}
+
+section.news div.news-panel div.holder div {
+  margin-top: 100vh;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+section.news div.news-panel div.holder div.animate {
   animation: fromBottom 0.6s both;
 }
 
-div.newsPanel section.news div:nth-of-type(1) {
+section.news div.news-panel div.holder:nth-of-type(1) div {
   background-image: url("./img/news1.jpg");
 }
-div.newsPanel section.news div:nth-of-type(2) {
+section.news div.news-panel div.holder:nth-of-type(2) div {
   background-image: url("./img/news2.jpg");
-  animation-delay: 0.1s;
-}
-div.newsPanel section.news div:nth-of-type(3) {
-  background-image: url("./img/news3.jpg");
   animation-delay: 0.2s;
 }
-
-div.newsPanel section.news div:nth-of-type(4) {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  background-image: url("./img/news4.jpg");
-  animation-delay: 0.3s;
-}
-
-div.newsPanel section.news div:nth-of-type(5) {
-  background-image: url("./img/news5.jpg");
+section.news div.news-panel div.holder:nth-of-type(3) div {
+  background-image: url("./img/news3.jpg");
   animation-delay: 0.4s;
 }
 
-div.newsPanel section.news div p {
+section.news div.news-panel div.holder:nth-of-type(4) {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+section.news div.news-panel div.holder:nth-of-type(4) div {
+  background-image: url("./img/news4.jpg");
+  animation-delay: 0.6s;
+}
+
+section.news div.news-panel div.holder:nth-of-type(5) div {
+  background-image: url("./img/news5.jpg");
+  animation-delay: 0.8s;
+}
+
+section.news div.news-panel div p {
   position: absolute;
   text-align: center;
   width: 80%;
@@ -279,17 +300,17 @@ div.newsPanel section.news div p {
   transition: 0.3s;
 }
 
-div.newsPanel section.news div:hover {
+section.news div.news-panel div.holder div:hover {
   background-color: rgba(31, 31, 31, 0.8);
   background-blend-mode: multiply;
 }
 
-div.newsPanel section.news div:hover p {
+section.news div.news-panel div.holder div:hover p {
   opacity: 1;
   cursor: default;
 }
 
-div.newsPanel section.news div button {
+section.news div.news-panel div.holder div button {
   position: absolute;
   bottom: 5%;
   right: 10%;
@@ -302,27 +323,26 @@ div.newsPanel section.news div button {
   opacity: 0;
   transition: 0.3s;
 }
-div.newsPanel section.news div button a {
+section.news div.news-panel div.holder div button a {
   color: #fefefe;
   text-decoration: none;
 }
 
-div.newsPanel section.news div:hover button {
+section.news div.news-panel div.holder div:hover button {
   cursor: pointer;
   opacity: 1;
 }
-div.newsPanel section.news div:hover button:hover {
+section.news div.news-panel div.holder div:hover button:hover {
   border-bottom: 2px solid #fefefe;
   right: 9%;
 }
 
-div.newsPanel section.news div button:focus {
+section.news div.news-panel div.holder div button:focus {
   outline: none;
 }
 
-div.newsPanel button.load-more-btn {
+section.news button.load-more-btn {
   display: block;
-  text-transform: uppercase;
   border: 1px solid #828282;
   color: #828282;
   background-color: white;
@@ -332,7 +352,7 @@ div.newsPanel button.load-more-btn {
   transition: 0.3s;
 }
 
-div.newsPanel button.load-more-btn:hover {
+section.news button.load-more-btn:hover {
   cursor: pointer;
   background-color: #1f1f1f;
   color: #fefefe;
@@ -372,16 +392,15 @@ section.podcast div.podcast-wrap p {
 }
 
 section.podcast div.podcast-wrap p.title {
-  animation: appear 1s both;
-  animation-delay: 1s;
+  animation: appear 2s both;
 }
 
 section.podcast div.podcast-wrap h1 {
   color: #fefefe;
   font-size: 60px;
   font-weight: 500;
-  animation: appear 1s both;
-  animation-delay: 1.2s;
+  animation: appear 2s both;
+  animation-delay: 0.2s;
 }
 
 section.podcast div.podcast-wrap div.podcast-panel {
@@ -400,8 +419,8 @@ section.podcast div.podcast-wrap div.podcast-panel div.podcast-photo {
 section.podcast div.podcast-wrap div.podcast-panel div.podcast-photo img {
   width: 100%;
   height: auto;
-  animation: appear 1s both;
-  animation-delay: 1.4s;
+  animation: appear 2s both;
+  animation-delay: 0.4s;
 }
 
 section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts {
@@ -412,8 +431,8 @@ section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts div {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  animation: appear 1s both;
-  animation-delay: 1.6s;
+  animation: appear 2s both;
+  animation-delay: 0.6s;
 }
 
 section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts ul {
@@ -481,7 +500,7 @@ section.ranking {
     #f6f6f6 50%,
     #f6f6f6 100%
   );
-  padding: 10vh 0;
+  padding: 10vh 0 20vh;
 }
 
 section.ranking div.ranking-wrap {
@@ -491,7 +510,6 @@ section.ranking div.ranking-wrap {
 
 section.ranking div.ranking-wrap button {
   display: block;
-  text-transform: uppercase;
   border: 1px solid #828282;
   color: #828282;
   background-color: white;
@@ -507,7 +525,8 @@ section.ranking div.ranking-wrap button:hover {
   color: #fefefe;
 }
 
-section.ranking div.ranking-wrap p.subtitle {
+section.ranking div.ranking-wrap p.subtitle,
+section.featured-cyclist div.featured-cyclist-wrap div.cyclist p:first-child {
   display: block;
   color: #828282;
   text-transform: uppercase;
@@ -555,6 +574,11 @@ section.ranking div.ranking-wrap ul li div {
   position: relative;
   background-color: #1f1f1f;
   height: 5vh;
+  max-width: 0%;
+}
+
+section.ranking div.ranking-wrap ul li div.animate {
+  animation: pointsGrow 3s both;
 }
 
 section.ranking div.ranking-wrap ul li:nth-of-type(1) div {
@@ -595,6 +619,63 @@ section.ranking div.ranking-wrap ul li div p {
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
+  opacity: 0;
+}
+
+section.ranking div.ranking-wrap ul li div.animate p {
+  animation: appear 2s both;
+}
+
+/* cyclist panel */
+
+section.featured-cyclist div.featured-cyclist-wrap {
+  display: flex;
+}
+
+section.featured-cyclist div.featured-cyclist-wrap div.cyclist {
+  margin-top: -10vh;
+  background-color: #181818;
+  flex-basis: 30%;
+}
+
+section.featured-cyclist div.featured-cyclist-wrap div.cyclist p:first-child {
+  margin-bottom: 20px;
+}
+
+section.featured-cyclist div.featured-cyclist-wrap div.cyclist a {
+  margin-top: 30px;
+  margin-right: 10px;
+  text-align: right;
+  display: block;
+  color: #fefefe;
+  text-decoration: none;
+  font-size: 22px;
+  transition: 0.3s;
+}
+section.featured-cyclist div.featured-cyclist-wrap div.cyclist a:hover {
+  margin-right: 0px;
+}
+
+section.featured-cyclist div.featured-cyclist-wrap div.cyclist a i {
+  margin-left: 20px;
+}
+
+section.featured-cyclist div.featured-cyclist-wrap div.cyclist-photo {
+  flex-basis: 70%;
+}
+
+section.featured-cyclist div.featured-cyclist-wrap div.cyclist-photo img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+footer {
+  width: 100%;
+  height: 80px;
+  background-color: black;
 }
 
 /* keyframes */
@@ -638,5 +719,13 @@ section.ranking div.ranking-wrap ul li div p {
   to {
     margin-right: 0;
     opacity: 1;
+  }
+}
+@keyframes pointsGrow {
+  from {
+    max-width: 0%;
+  }
+  to {
+    max-width: 100%;
   }
 }
