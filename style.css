@@ -12,6 +12,36 @@
   font-family: "Ubuntu", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+a.go-up {
+  border: 2px solid #fefefe;
+  color: #fefefe;
+  text-decoration: none;
+  border-radius: 50%;
+  text-align: center;
+  position: fixed;
+  font-size: 20px;
+  line-height: 50px;
+  display: block;
+  background-color: #181818;
+  width: 50px;
+  height: 50px;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+  animation: appear 0.5s;
+  transition: 0.3s;
+}
+a.go-up:hover {
+  line-height: 40px;
+}
+
+a.go-up.hidden {
+  display: none;
+}
 /* NavBar */
 
 nav {
@@ -96,7 +126,9 @@ section.events div.eventPhoto {
 }
 
 section.events div.eventPhoto img {
+  object-fit: cover;
   height: 100%;
+  width: auto;
 }
 
 section.events div.eventDescription {
@@ -178,14 +210,15 @@ div.newsPanel {
     #f6f6f6 50%,
     #f6f6f6 100%
   );
-  padding-bottom: 10vh;
+  padding: 10vh 0;
 }
+
 div.newsPanel h1 {
   max-width: 1600px;
   margin: 0 auto;
+  color: #1f1f1f;
   font-size: 50px;
   line-height: 50px;
-  padding-top: 10vh;
 }
 
 div.newsPanel section.news {
@@ -338,10 +371,17 @@ section.podcast div.podcast-wrap p {
   padding-bottom: 10px;
 }
 
+section.podcast div.podcast-wrap p.title {
+  animation: appear 1s both;
+  animation-delay: 1s;
+}
+
 section.podcast div.podcast-wrap h1 {
   color: #fefefe;
   font-size: 60px;
   font-weight: 500;
+  animation: appear 1s both;
+  animation-delay: 1.2s;
 }
 
 section.podcast div.podcast-wrap div.podcast-panel {
@@ -360,6 +400,8 @@ section.podcast div.podcast-wrap div.podcast-panel div.podcast-photo {
 section.podcast div.podcast-wrap div.podcast-panel div.podcast-photo img {
   width: 100%;
   height: auto;
+  animation: appear 1s both;
+  animation-delay: 1.4s;
 }
 
 section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts {
@@ -370,6 +412,8 @@ section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts div {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  animation: appear 1s both;
+  animation-delay: 1.6s;
 }
 
 section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts ul {
@@ -426,16 +470,134 @@ section.podcast
   outline: none;
 }
 
-/* 
-section.events div.eventPhoto {
-  flex-basis: 70%;
-  flex-grow: 0;
-  overflow: hidden;
+/* Ranking panel */
+
+section.ranking {
+  background: linear-gradient(
+    to right,
+    #ddd 0%,
+    #ddd 50%,
+    #000000 50%,
+    #f6f6f6 50%,
+    #f6f6f6 100%
+  );
+  padding: 10vh 0;
 }
 
-section.events div.eventPhoto img {
-  height: 100%;
-} */
+section.ranking div.ranking-wrap {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+section.ranking div.ranking-wrap button {
+  display: block;
+  text-transform: uppercase;
+  border: 1px solid #828282;
+  color: #828282;
+  background-color: white;
+  margin: 0 auto 0 auto;
+  font-size: 22px;
+  padding: 15px 25px;
+  transition: 0.3s;
+}
+
+section.ranking div.ranking-wrap button:hover {
+  cursor: pointer;
+  background-color: #1f1f1f;
+  color: #fefefe;
+}
+
+section.ranking div.ranking-wrap p.subtitle {
+  display: block;
+  color: #828282;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 24px;
+  padding-top: 10px;
+}
+
+section.ranking div.ranking-wrap h1 {
+  color: #1f1f1f;
+  font-size: 50px;
+}
+section.ranking div.ranking-wrap ul {
+  margin: 10vh 0;
+  list-style: none;
+  width: 100%;
+  /* border-right: 5px solid #181818; */
+}
+section.ranking div.ranking-wrap ul li {
+  display: flex;
+  width: 100%;
+  padding-bottom: 2vh;
+}
+section.ranking div.ranking-wrap ul li:last-child {
+  padding-bottom: 0;
+}
+
+section.ranking div.ranking-wrap ul li p {
+  color: #181818;
+  font-size: 24px;
+  line-height: 5vh;
+  position: relative;
+  flex-basis: 30%;
+  display: inline-block;
+}
+section.ranking div.ranking-wrap ul li p span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+section.ranking div.ranking-wrap ul li div {
+  display: inline-block;
+  position: relative;
+  background-color: #1f1f1f;
+  height: 5vh;
+}
+
+section.ranking div.ranking-wrap ul li:nth-of-type(1) div {
+  flex-basis: calc(70% * (200 / 200));
+}
+section.ranking div.ranking-wrap ul li:nth-of-type(2) div {
+  flex-basis: calc(70% * (188 / 200));
+}
+section.ranking div.ranking-wrap ul li:nth-of-type(3) div {
+  flex-basis: calc(70% * (163 / 200));
+}
+section.ranking div.ranking-wrap ul li:nth-of-type(4) div {
+  flex-basis: calc(70% * (144 / 200));
+}
+section.ranking div.ranking-wrap ul li:nth-of-type(5) div {
+  flex-basis: calc(70% * (142 / 200));
+}
+section.ranking div.ranking-wrap ul li:nth-of-type(6) div {
+  flex-basis: calc(70% * (127 / 200));
+}
+section.ranking div.ranking-wrap ul li:nth-of-type(7) div {
+  flex-basis: calc(70% * (115 / 200));
+}
+section.ranking div.ranking-wrap ul li:nth-of-type(8) div {
+  flex-basis: calc(70% * (103 / 200));
+}
+section.ranking div.ranking-wrap ul li:nth-of-type(9) div {
+  flex-basis: calc(70% * (83 / 200));
+}
+section.ranking div.ranking-wrap ul li:nth-of-type(10) div {
+  flex-basis: calc(70% * (76 / 200));
+}
+
+section.ranking div.ranking-wrap ul li div p {
+  color: #fefefe;
+  font-size: 24px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* keyframes */
 
 @keyframes fromBottom {
   from {
@@ -448,9 +610,29 @@ section.events div.eventPhoto img {
   }
 }
 
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes fromLeft {
   from {
-    margin-right: 100vw;
+    margin-left: -100vw;
+    opacity: 0;
+  }
+  to {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fromRight {
+  from {
+    margin-right: -100vw;
     opacity: 0;
   }
   to {
