@@ -93,9 +93,6 @@ section.events div.eventPhoto {
   flex-basis: 70%;
   flex-grow: 0;
   overflow: hidden;
-  /* background-image: url("./img/bikeEvent1.jpg");
-  background-size: cover;
-  background-position: center center; */
 }
 
 section.events div.eventPhoto img {
@@ -145,16 +142,16 @@ section.events div.eventDescription div {
 
 section.events div.eventDescription div button {
   background-color: #fefefe;
-  color: #1f1f1f;
+  color: #828282;
   border: none;
-  border-bottom: 1px solid #1f1f1f;
+  border-bottom: 1px solid #828282;
   font-size: 20px;
   width: 50%;
   height: 10vh;
   transition: 0.2s;
 }
 section.events div.eventDescription div button:first-child {
-  border-right: 1px solid #1f1f1f;
+  border-right: 1px solid #828282;
 }
 
 section.events div.eventDescription div button:hover {
@@ -163,44 +160,53 @@ section.events div.eventDescription div button:hover {
   color: #fefefe;
 }
 
+section.events div.eventDescription div button i:first-child {
+  margin-right: 20px;
+}
+section.events div.eventDescription div button i:last-child {
+  margin-left: 20px;
+}
+
 /* News Panel */
 
 div.newsPanel {
-  height: 100vh;
-  max-width: 1280px;
-  padding: 50px 0 150px 0;
-  padding-bottom: 200px;
-  margin: 0 auto;
+  background: linear-gradient(
+    to right,
+    #ddd 0%,
+    #ddd 50%,
+    #000000 50%,
+    #f6f6f6 50%,
+    #f6f6f6 100%
+  );
+  padding-bottom: 10vh;
 }
 div.newsPanel h1 {
+  max-width: 1600px;
+  margin: 0 auto;
   font-size: 50px;
   line-height: 50px;
-  padding-bottom: 50px;
+  padding-top: 10vh;
 }
 
 div.newsPanel section.news {
-  display: flex;
-  height: 100%;
-  justify-content: space-between;
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 5vh;
+  grid-column-gap: 5vh;
+  margin: 10vh auto;
   overflow: hidden;
 }
 
 div.newsPanel section.news div {
-  flex-basis: 30%;
-  height: 100%;
-  background-color: #ddd;
+  height: 80vh;
   background-size: cover;
   background-position: center center;
   position: relative;
-  width: 100%;
   transition: 0.3s;
-  margin-top: 100vh;
   animation: fromBottom 0.6s both;
-}
-
-div.newsPanel section.news div:hover {
-  margin-top: -10px;
-  margin-bottom: 10px;
 }
 
 div.newsPanel section.news div:nth-of-type(1) {
@@ -208,10 +214,22 @@ div.newsPanel section.news div:nth-of-type(1) {
 }
 div.newsPanel section.news div:nth-of-type(2) {
   background-image: url("./img/news2.jpg");
-  animation-delay: 0.2s;
+  animation-delay: 0.1s;
 }
 div.newsPanel section.news div:nth-of-type(3) {
   background-image: url("./img/news3.jpg");
+  animation-delay: 0.2s;
+}
+
+div.newsPanel section.news div:nth-of-type(4) {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-image: url("./img/news4.jpg");
+  animation-delay: 0.3s;
+}
+
+div.newsPanel section.news div:nth-of-type(5) {
+  background-image: url("./img/news5.jpg");
   animation-delay: 0.4s;
 }
 
@@ -242,7 +260,6 @@ div.newsPanel section.news div button {
   position: absolute;
   bottom: 5%;
   right: 10%;
-
   border: none;
   color: #fefefe;
   background-color: transparent;
@@ -270,6 +287,156 @@ div.newsPanel section.news div button:focus {
   outline: none;
 }
 
+div.newsPanel button.load-more-btn {
+  display: block;
+  text-transform: uppercase;
+  border: 1px solid #828282;
+  color: #828282;
+  background-color: white;
+  margin: 0 auto 0 auto;
+  font-size: 22px;
+  padding: 15px 25px;
+  transition: 0.3s;
+}
+
+div.newsPanel button.load-more-btn:hover {
+  cursor: pointer;
+  background-color: #1f1f1f;
+  color: #fefefe;
+}
+
+/* Podcast panel  */
+
+section.podcast {
+  background-color: #1f1f1f;
+  background: linear-gradient(
+    to left,
+    #1f1f1f 0%,
+    #1f1f1f 50%,
+    #000000 50%,
+    #181818 50%,
+    #181818 100%
+  );
+
+  position: relative;
+  padding-bottom: 20vh;
+}
+
+section.podcast div.podcast-wrap {
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 20vh;
+}
+
+section.podcast div.podcast-wrap p {
+  display: block;
+  color: #828282;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 24px;
+  padding-bottom: 10px;
+}
+
+section.podcast div.podcast-wrap h1 {
+  color: #fefefe;
+  font-size: 60px;
+  font-weight: 500;
+}
+
+section.podcast div.podcast-wrap div.podcast-panel {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 5vh;
+}
+
+section.podcast div.podcast-wrap div.podcast-panel div.podcast-photo {
+  flex-basis: 66%;
+  flex-grow: 0;
+  overflow: hidden;
+}
+
+section.podcast div.podcast-wrap div.podcast-panel div.podcast-photo img {
+  width: 100%;
+  height: auto;
+}
+
+section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts {
+  flex-basis: 28%;
+  position: relative;
+}
+section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts div {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts ul {
+  list-style: none;
+}
+
+section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts ul li a {
+  color: #fefefe;
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 10vh;
+  transition: 0.3s;
+}
+
+section.podcast
+  div.podcast-wrap
+  div.podcast-panel
+  div.more-podcasts
+  ul
+  li
+  a:hover {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts ul li a i {
+  margin-left: 20px;
+}
+
+section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts button {
+  border: 1px solid #828282;
+  color: #828282;
+  padding: 15px 35px;
+  font-size: 24px;
+  margin-top: 5vh;
+  background-color: transparent;
+  transition: 0.3s;
+}
+section.podcast
+  div.podcast-wrap
+  div.podcast-panel
+  div.more-podcasts
+  button:hover {
+  cursor: pointer;
+  background-color: #fefefe;
+  color: #1f1f1f;
+  border: 1px solid #1f1f1f;
+}
+section.podcast
+  div.podcast-wrap
+  div.podcast-panel
+  div.more-podcasts
+  button:focus {
+  outline: none;
+}
+
+/* 
+section.events div.eventPhoto {
+  flex-basis: 70%;
+  flex-grow: 0;
+  overflow: hidden;
+}
+
+section.events div.eventPhoto img {
+  height: 100%;
+} */
+
 @keyframes fromBottom {
   from {
     margin-top: 100vh;
@@ -277,6 +444,17 @@ div.newsPanel section.news div button:focus {
   }
   to {
     margin-top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fromLeft {
+  from {
+    margin-right: 100vw;
+    opacity: 0;
+  }
+  to {
+    margin-right: 0;
     opacity: 1;
   }
 }
