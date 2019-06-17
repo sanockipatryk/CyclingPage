@@ -129,6 +129,7 @@ section.events div.eventPhoto img {
   object-fit: cover;
   height: 100%;
   width: auto;
+  filter: grayscale(50%);
 }
 
 section.events div.eventDescription,
