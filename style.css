@@ -44,7 +44,11 @@ a.go-up.hidden {
 }
 /* NavBar */
 
-nav {
+nav.mobile {
+  display: none;
+}
+
+nav.desktop {
   width: 100%;
   height: var(--navHeight);
   /* background-color: #0081af; */
@@ -53,62 +57,60 @@ nav {
   border-bottom: 1px solid #adacb5;
 }
 
-nav div {
+nav.desktop div {
   max-width: 1280px;
   height: 100%;
   margin: 0 auto;
 }
 
-nav div ul {
+nav.desktop div ul {
   display: flex;
   justify-content: space-between;
   list-style: none;
   font-size: 20px;
   line-height: var(--navHeight);
-  /* color: #ead2ac; */
   color: black;
 }
 
-nav div ul li {
-  flex-basis: 14%;
+nav.desktop div ul li {
   transition: 0.3s;
   text-align: center;
 }
 
-nav div ul li a {
+nav.desktop div ul li a {
   text-decoration: none;
-  /* color: #ead2ac; */
   color: black;
 }
 
-nav div ul li:hover {
+nav.desktop div ul li:hover {
   cursor: pointer;
-  padding-left: 10px;
+  line-height: 70px;
 }
 
-nav div ul li:first-of-type {
+nav.desktop div ul li:first-of-type {
   width: 30%;
   font-size: 40px;
   flex-basis: 20%;
   text-align: left;
 }
 
-nav div ul li a {
+nav.desktop div ul li a {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-nav div ul li:first-of-type a i {
+nav.desktop div ul li:first-of-type a i {
   transition: 0.6s;
 }
 
-nav div ul li:first-of-type:hover {
+nav.desktop div ul li:first-of-type:hover {
   cursor: pointer;
   padding-left: 0;
+  line-height: 80px;
 }
 
-nav div ul li:first-of-type:hover a i {
+nav.desktop div ul li:first-of-type:hover a i {
   margin-left: 20%;
 }
 
@@ -123,12 +125,10 @@ section.events div.eventPhoto {
   flex-basis: 70%;
   flex-grow: 0;
   overflow: hidden;
-}
-
-section.events div.eventPhoto img {
-  object-fit: cover;
-  height: 100%;
-  width: auto;
+  background-image: url("img/bikeEvent1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   filter: grayscale(50%);
 }
 
@@ -730,14 +730,14 @@ footer div.footer-wrap > ul > li:first-of-type {
   border-left: 1px solid #656565;
   border-right: 1px solid #656565;
 
-  font-size: 7vh;
+  font-size: 6vh;
   line-height: 14vh;
 }
 footer div.footer-wrap > ul > li:nth-of-type(2) {
   border-right: 1px solid #656565;
   text-align: center;
   flex-basis: 16%;
-  font-size: 7vh;
+  font-size: 6vh;
   line-height: 14vh;
 }
 footer div.footer-wrap > ul > li:nth-of-type(3) {
@@ -818,5 +818,141 @@ footer div.footer-wrap > ul > ul li {
   }
   to {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 1600px) {
+  section.events div.eventDescription,
+  section.featured-cyclist div.featured-cyclist-wrap div.cyclist {
+    padding: 75px 35px;
+  }
+
+  section.news h1 {
+    max-width: 1360px;
+  }
+
+  section.news div.news-panel {
+    max-width: 1360px;
+  }
+
+  section.podcast div.podcast-wrap {
+    max-width: 1360px;
+  }
+
+  section.ranking div.ranking-wrap {
+    max-width: 1360px;
+  }
+  footer div.footer-wrap > ul > li:nth-of-type(1),
+  footer div.footer-wrap > ul > li:nth-of-type(2) {
+    font-size: 5vh;
+  }
+}
+
+@media (max-width: 1440px) {
+  nav.desktop div {
+    max-width: 1024px;
+  }
+  nav.desktop div ul li {
+    flex-basis: unset;
+  }
+  nav.desktop div ul li:first-of-type {
+    flex-basis: 15%;
+  }
+  nav.desktop div ul li:hover {
+    padding-left: 0;
+    line-height: 70px;
+  }
+  nav.desktop div ul li:first-of-type:hover a i {
+    margin-left: 0;
+  }
+
+  section.events div.eventDescription,
+  section.featured-cyclist div.featured-cyclist-wrap div.cyclist {
+    padding: 50px 25px;
+  }
+
+  section.events div.eventDescription h1,
+  section.featured-cyclist div.featured-cyclist-wrap div.cyclist h1 {
+    font-size: 46px;
+  }
+  section.events div.eventDescription p.date {
+    font-size: 20px;
+  }
+
+  section.ranking div.ranking-wrap p.subtitle,
+  section.featured-cyclist div.featured-cyclist-wrap div.cyclist p:first-child {
+    font-size: 20px;
+  }
+
+  section.news h1 {
+    max-width: 1200px;
+  }
+
+  section.news div.news-panel {
+    max-width: 1200px;
+  }
+
+  section.podcast div.podcast-wrap {
+    max-width: 1200px;
+  }
+
+  section.podcast div.podcast-wrap div.podcast-panel div.podcast-photo {
+    flex-basis: 60%;
+  }
+
+  section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts {
+    flex-basis: 34%;
+  }
+
+  section.ranking div.ranking-wrap {
+    max-width: 1200px;
+  }
+  section.ranking div.ranking-wrap ul li p {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1280px) {
+  nav.desktop {
+    display: none;
+  }
+
+  nav.mobile {
+    display: block;
+    width: 100%;
+    height: 60px;
+    padding: 0 25px;
+  }
+
+  nav.mobile a,
+  nav.mobile button.burger {
+    color: #1f1f1f;
+    text-decoration: none;
+    font-size: 40px;
+    line-height: 60px;
+  }
+  nav.mobile button.burger {
+    border: none;
+    background: transparent;
+    float: right;
+    transition: 0.5s;
+  }
+
+  nav.mobile button.burger:focus {
+    outline: none;
+  }
+
+  nav.mobile button.burger.active {
+    transform: rotate(-90deg);
+  }
+
+  nav.mobile div.mobile-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 60px;
+    height: 60px;
+    background-color: #ddd;
+    z-index: 100;
   }
 }
