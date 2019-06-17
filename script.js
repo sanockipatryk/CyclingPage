@@ -1,7 +1,9 @@
 const arrowUp = document.querySelector("a.go-up.hidden");
 const rankingSection = document.querySelector("#ranking");
 const newsSection = document.querySelector("#news");
+const podcastSection = document.querySelector("#podcast");
 
+const podcastWrap = document.querySelector("section.podcast div.podcast-wrap");
 const newsElements = document.querySelectorAll(
   "section.news div.news-panel div.holder div"
 );
@@ -11,7 +13,6 @@ const rankingBars = document.querySelectorAll(
 let scrollTop = 0;
 
 handleArrowUp = () => {
-  console.log(scrollTop);
   if (scrollTop < window.innerHeight / 3) {
     arrowUp.classList.add("hidden");
   } else if (
@@ -30,6 +31,17 @@ handleNewsAnimate = () => {
     newsElements.item(0).classList.contains("animate")
   ) {
     newsElements.forEach(news => news.classList.remove("animate"));
+  }
+};
+
+handlePodcastAnimate = () => {
+  if (scrollTop > podcastSection.offsetTop - window.screen.height / 3) {
+    podcastWrap.classList.add("animate");
+  } else if (
+    scrollTop < podcastSection.offsetTop - window.screen.height &&
+    podcastWrap.classList.contains("animate")
+  ) {
+    podcastWrap.classList.remove("animate");
   }
 };
 
@@ -53,6 +65,7 @@ handleScrollArrowUp = () => {
 
   handleArrowUp();
   handleNewsAnimate();
+  handlePodcastAnimate();
   handleRankingAnimate();
 };
 
