@@ -3,6 +3,7 @@
 
 :root {
   --navHeight: 80px;
+  --rankingFlexBasis: 70%;
 }
 
 * {
@@ -31,7 +32,7 @@ a.go-up {
   height: 50px;
   bottom: 15px;
   right: 15px;
-  z-index: 99;
+  z-index: 10;
   animation: appear 0.5s;
   transition: 0.3s;
 }
@@ -605,34 +606,34 @@ section.ranking div.ranking-wrap ul li div.animate {
 }
 
 section.ranking div.ranking-wrap ul li:nth-of-type(1) div {
-  flex-basis: calc(70% * (200 / 200));
+  flex-basis: calc(var(--rankingFlexBasis) * (200 / 200));
 }
 section.ranking div.ranking-wrap ul li:nth-of-type(2) div {
-  flex-basis: calc(70% * (188 / 200));
+  flex-basis: calc(var(--rankingFlexBasis) * (188 / 200));
 }
 section.ranking div.ranking-wrap ul li:nth-of-type(3) div {
-  flex-basis: calc(70% * (163 / 200));
+  flex-basis: calc(var(--rankingFlexBasis) * (163 / 200));
 }
 section.ranking div.ranking-wrap ul li:nth-of-type(4) div {
-  flex-basis: calc(70% * (144 / 200));
+  flex-basis: calc(var(--rankingFlexBasis) * (144 / 200));
 }
 section.ranking div.ranking-wrap ul li:nth-of-type(5) div {
-  flex-basis: calc(70% * (142 / 200));
+  flex-basis: calc(var(--rankingFlexBasis) * (142 / 200));
 }
 section.ranking div.ranking-wrap ul li:nth-of-type(6) div {
-  flex-basis: calc(70% * (127 / 200));
+  flex-basis: calc(var(--rankingFlexBasis) * (127 / 200));
 }
 section.ranking div.ranking-wrap ul li:nth-of-type(7) div {
-  flex-basis: calc(70% * (115 / 200));
+  flex-basis: calc(var(--rankingFlexBasis) * (115 / 200));
 }
 section.ranking div.ranking-wrap ul li:nth-of-type(8) div {
-  flex-basis: calc(70% * (103 / 200));
+  flex-basis: calc(var(--rankingFlexBasis) * (103 / 200));
 }
 section.ranking div.ranking-wrap ul li:nth-of-type(9) div {
-  flex-basis: calc(70% * (83 / 200));
+  flex-basis: calc(var(--rankingFlexBasis) * (83 / 200));
 }
 section.ranking div.ranking-wrap ul li:nth-of-type(10) div {
-  flex-basis: calc(70% * (76 / 200));
+  flex-basis: calc(var(--rankingFlexBasis) * (76 / 200));
 }
 
 section.ranking div.ranking-wrap ul li div p {
@@ -913,6 +914,10 @@ footer div.footer-wrap > ul > ul li {
 }
 
 @media (max-width: 1280px) {
+  :root {
+    --rankingFlexBasis: 60%;
+  }
+
   nav.desktop {
     display: none;
   }
@@ -935,7 +940,7 @@ footer div.footer-wrap > ul > ul li {
     border: none;
     background: transparent;
     float: right;
-    transition: 0.5s;
+    transition: 0.3s;
   }
 
   nav.mobile button.burger:focus {
@@ -947,12 +952,157 @@ footer div.footer-wrap > ul > ul li {
   }
 
   nav.mobile div.mobile-menu {
+    display: none;
     position: absolute;
     left: 0;
     right: 0;
     top: 60px;
-    height: 60px;
+    background-color: white;
+    z-index: 20;
+  }
+
+  nav.mobile div.mobile-menu.active {
+    display: block;
+  }
+  nav.mobile div.mobile-menu ul {
+    list-style: none;
+  }
+
+  nav.mobile div.mobile-menu ul li {
+    border-bottom: 1px solid #656565;
+  }
+
+  nav.mobile div.mobile-menu ul li:hover {
     background-color: #ddd;
-    z-index: 100;
+  }
+
+  nav.mobile div.mobile-menu ul li:first-child {
+    border-top: 1px solid #656565;
+  }
+
+  nav.mobile div.mobile-menu ul li a {
+    display: block;
+    font-size: 24px;
+    line-height: 60px;
+    padding: 0 20px;
+  }
+
+  section.events div.eventDescription,
+  section.featured-cyclist div.featured-cyclist-wrap div.cyclist {
+    padding: 50px 25px;
+    flex-basis: 40%;
+  }
+
+  section.events div.eventDescription h1,
+  section.featured-cyclist div.featured-cyclist-wrap div.cyclist h1 {
+    font-size: 46px;
+  }
+  section.events div.eventDescription p.date {
+    font-size: 20px;
+  }
+
+  section.ranking div.ranking-wrap p.subtitle,
+  section.featured-cyclist div.featured-cyclist-wrap div.cyclist p:first-child {
+    font-size: 20px;
+  }
+
+  section.news h1 {
+    max-width: 960px;
+  }
+
+  section.news div.news-panel {
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 5vh;
+    grid-column-gap: 5vh;
+    margin: 10vh auto;
+    overflow: hidden;
+  }
+
+  section.news div.news-panel div.holder:nth-of-type(4) {
+    order: 2;
+  }
+  section.news div.news-panel div p {
+    font-size: 20px;
+  }
+
+  section.podcast div.podcast-wrap {
+    max-width: 960px;
+  }
+
+  section.podcast div.podcast-wrap div.podcast-panel div.podcast-photo {
+    flex-basis: 60%;
+  }
+
+  section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts {
+    flex-basis: 34%;
+  }
+
+  section.podcast div.podcast-wrap div.podcast-panel div.more-podcasts ul li a {
+    font-size: 20px;
+    line-height: 7vh;
+  }
+
+  section.ranking div.ranking-wrap {
+    max-width: 960px;
+  }
+  section.ranking div.ranking-wrap ul li p {
+    font-size: 20px;
+    flex-basis: 40%;
+  }
+
+  section.events div.eventDescription p.description,
+  section.featured-cyclist div.featured-cyclist-wrap div.cyclist p.description {
+    font-size: 18px;
+  }
+
+  footer {
+    height: 16vh;
+    padding: 2vh;
+  }
+
+  footer div.footer-wrap > ul > ul li {
+    font-size: 18px;
+    line-height: 12vh;
+  }
+
+  footer div.footer-wrap > ul > li:nth-of-type(1),
+  footer div.footer-wrap > ul > li:nth-of-type(2) {
+    line-height: 12vh;
+    font-size: 4vh;
+  }
+  footer div.footer-wrap > ul > li:nth-of-type(3),
+  footer div.footer-wrap > ul > li:nth-of-type(4),
+  footer div.footer-wrap > ul > li:nth-of-type(5),
+  footer div.footer-wrap > ul > li:nth-of-type(6) {
+    line-height: 12vh;
+  }
+}
+
+@media (max-width: 1024px) {
+  section.events {
+    flex-direction: column;
+    height: 120vh;
+  }
+  section.events div.eventPhoto {
+    background-position: top center;
+  }
+
+  section.events div.eventDescription {
+    flex-grow: 1;
+  }
+
+  section.events div.eventDescription h1 {
+    font-size: 40px;
+  }
+
+  section.events div.eventDescription hr {
+    height: 3px;
+  }
+
+  section.events div.eventDescription p {
+    padding-bottom: 10vh;
   }
 }

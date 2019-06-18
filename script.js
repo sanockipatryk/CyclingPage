@@ -1,4 +1,9 @@
 const arrowUp = document.querySelector("a.go-up.hidden");
+const burgerButton = document.querySelector("nav.mobile button.burger");
+const mobileNav = document.querySelector("nav.mobile div.mobile-menu");
+const mobileLinks = document.querySelectorAll(
+  "nav.mobile div.mobile-menu ul li a "
+);
 const rankingSection = document.querySelector("#ranking");
 const newsSection = document.querySelector("#news");
 const podcastSection = document.querySelector("#podcast");
@@ -13,10 +18,10 @@ const rankingBars = document.querySelectorAll(
 let scrollTop = 0;
 
 handleArrowUp = () => {
-  if (scrollTop < window.innerHeight / 3) {
+  if (scrollTop < window.innerHeight / 2) {
     arrowUp.classList.add("hidden");
   } else if (
-    scrollTop > window.innerHeight / 3 &&
+    scrollTop > window.innerHeight / 2 &&
     arrowUp.classList.contains("hidden")
   ) {
     arrowUp.classList.remove("hidden");
@@ -24,7 +29,7 @@ handleArrowUp = () => {
 };
 
 handleNewsAnimate = () => {
-  if (scrollTop > newsSection.offsetTop - window.screen.height / 3) {
+  if (scrollTop > newsSection.offsetTop - window.screen.height / 2) {
     newsElements.forEach(news => news.classList.add("animate"));
   } else if (
     scrollTop === 0 &&
@@ -35,7 +40,7 @@ handleNewsAnimate = () => {
 };
 
 handlePodcastAnimate = () => {
-  if (scrollTop > podcastSection.offsetTop - window.screen.height / 3) {
+  if (scrollTop > podcastSection.offsetTop - window.screen.height / 2) {
     podcastWrap.classList.add("animate");
   } else if (
     scrollTop < podcastSection.offsetTop - window.screen.height &&
@@ -46,7 +51,7 @@ handlePodcastAnimate = () => {
 };
 
 handleRankingAnimate = () => {
-  if (scrollTop > rankingSection.offsetTop - window.screen.height / 3) {
+  if (scrollTop > rankingSection.offsetTop - window.screen.height / 2) {
     rankingBars.forEach(bar => bar.classList.add("animate"));
   } else if (
     scrollTop < rankingSection.offsetTop - window.screen.height &&
@@ -68,5 +73,14 @@ handleScrollArrowUp = () => {
   handlePodcastAnimate();
   handleRankingAnimate();
 };
+
+handleBurgerClick = () => {
+  burgerButton.classList.toggle("active");
+  mobileNav.classList.toggle("active");
+};
+
+mobileLinks.forEach(link => link.addEventListener("click", handleBurgerClick));
+
+burgerButton.addEventListener("click", handleBurgerClick);
 
 document.addEventListener("scroll", handleScrollArrowUp);
